@@ -11,7 +11,8 @@ USE restaurant;
 DROP TABLE IF EXISTS role;
 CREATE TABLE IF NOT EXISTS role(
     role_id TINYINT(2) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    role_name VARCHAR(25) NOT NULL
+    role_name VARCHAR(25) NOT NULL,
+    role_description VARCHAR(255)
 ) ENGINE = InnoDB;
 
 -- user
