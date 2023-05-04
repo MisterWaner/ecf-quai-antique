@@ -5,6 +5,7 @@ import { config } from 'dotenv';
 import db from './db/db.config.js';
 
 import roleRouter from './routes/roleRoute.js';
+import userRouter from './routes/userRoute.js';
 
 //Init server
 config();
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/role', roleRouter);
+app.use('/user', userRouter);
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server is running on port ${process.env.SERVER_PORT}`);

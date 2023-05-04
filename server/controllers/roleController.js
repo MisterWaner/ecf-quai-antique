@@ -1,3 +1,4 @@
+//Import module
 import Role from "../models/Role.js";
 
 //Read
@@ -5,7 +6,13 @@ const getRole = async (req, res, next) => {
 
     try {
 
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
+
+        //Check if id is OK
+        if (!id) {
+            return res.status(400).json({ message: "Missing parameter" });
+        }
+
         const [role] = await Role.fetchById(id);
         res.status(200).json(role);
 
@@ -65,7 +72,12 @@ const deleteRole = async (req, res, next) => {
 
     try {
 
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
+        //Check if id is OK
+        if (!id) {
+            return res.status(400).json({ message: "Missing parameter" });
+        }
+
         const [deleteResponse] = await Role.delete(id);
         res.status(200).json(deleteResponse);
 

@@ -22,10 +22,7 @@ CREATE TABLE IF NOT EXISTS user(
     user_email VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
     user_password2 VARCHAR(255) NOT NULL,
-    user_firstname VARCHAR(255) NOT NULL,
-    user_lastname VARCHAR(255) NOT NULL,
-    user_phone_numer INTEGER(10),
-    role_id TINYINT(2) NOT NULL,
+    role_id TINYINT(2) NOT NULL DEFAULT 2,
     CONSTRAINT fk_user_role_id FOREIGN KEY (role_id) REFERENCES role (role_id)
 ) ENGINE = InnoDB;
 
@@ -41,6 +38,9 @@ CREATE TABLE IF NOT EXISTS admin(
 DROP TABLE IF EXISTS client;
 CREATE TABLE IF NOT EXISTS client(
     client_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    client_firstname VARCHAR(255) NOT NULL,
+    client_lastname VARCHAR(255) NOT NULL,
+    client_phone_numer INTEGER(10),
     client_allergies VARCHAR(255),
     user_id INTEGER(11) NOT NULL,
     CONSTRAINT fk_client_user_id FOREIGN KEY (user_id) REFERENCES user (user_id)
@@ -152,3 +152,7 @@ CREATE TABLE IF NOT EXISTS menu_formula(
     CONSTRAINT fk_menu_formula_menu_id FOREIGN KEY (menu_id) REFERENCES menu (menu_id),
     CONSTRAINT fk_menu_formula_formula_id FOREIGN KEY (formula_id) REFERENCES formula (formula_id)
 ) ENGINE = InnoDB; 
+
+--Insertion of two roles
+INSERT INTO role (role_name, role_description) VALUES ('admin', 'Gérer le contenu et les utilisateur du site.');
+INSERT INTO role (role_name, role_description) VALUES ('client', 'Gérer son profil utilisateur et pouvoir réserver.');
