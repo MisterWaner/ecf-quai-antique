@@ -1,6 +1,8 @@
 //Import module
 import User from "../models/User.js";
-import db from "../db/db.config.js";
+import bcrypt from 'bcrypt';
+import { config } from "dotenv";
+config();
 
 //Read
 const getUser = async (req, res, next) => {
@@ -39,16 +41,8 @@ const getAllUsers = async (req, res, next) => {
 //Create
 const createUser = async (req, res, next) => {
     try {
-        const { email, password, confirmation } = req.body;
+        const { email, password, confirmation, role } = req.body;
 
-        //check if user already exists
-        let user = await db.query(`SELECT * FROM user WHERE user_email = ?;`, [email]);
-
-        if (user !== null) {
-            return res
-                .status(409)
-                .json({ message: `The user ${email} already exists` });
-        }
         //Check validation for datas
         if (!email || !password || !confirmation) {
             res.satus(400).json("missing data");
@@ -56,14 +50,22 @@ const createUser = async (req, res, next) => {
             res.satus(400).json("Password & confirmation must be the same !");
         }
 
-
         //hash password
-        User.hashPassword(password, confirmation);
+        async function hashPassword(password, confirmation) {
+            let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND));
+            password = hash;
+            confirmation = password;
+        }
+
+        hashPassword(password, confirmation)
+
+        
 
         //create user
-        user = await User.post(email, password, confirmation);
+        const user = await User.post(email, password, confirmation, role);
 
         res.json({ message: "User created", data: user });
+        
     } catch (error) {
         next(error);
     }

@@ -6,26 +6,26 @@ config()
 
 //User model
 class User {
-    email;
-    password;
-    confirmation;
-    roleId;
+    email = "";
+    password = "";
+    confirmation = "";
+    role = "client";
 
-    constructor(email, password, confirmation, roleId ) {
+    constructor(email, password, confirmation, role ) {
         this.email = email,
         this.password = password,
         this.confirmation = confirmation,
-        this.roleId = roleId
+        this.role = role
     }
 
-    static post = (email, password, confirmation, roleId) => {
+    static post = (email, password, confirmation, role) => {
         return db.query(
-        `INSERT INTO user (
+        `INSERT INTO user(
             user_email,
             user_password,
-            user_password2),
-            role_id VALUES (?,?,?,?);
-        `,[email, password, confirmation, roleId]);
+            user_password2,
+            user_role) VALUES (?,?,?,?);
+        `,[email, password, confirmation, role]);
     };
 
     static fetchAll = () => {
@@ -48,14 +48,14 @@ class User {
         return db.query("DELETE FROM user WHERE user_id = ?;", [id]);
     };
 
-    static hashPassword = async (password, confirmation) => {
-        let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND));
-        password = hash;
-        confirmation = password
-    }
+    
 
     static checkPassword = async (password, original) => {
         await bcrypt.compare(password, original);
+    }
+
+    static fetchByMail(email) {
+        return db.query(`SELECT * FROM user WHERE user_email = ?;`, [email]);
     }
 }
 

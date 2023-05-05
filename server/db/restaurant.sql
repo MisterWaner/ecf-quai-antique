@@ -7,14 +7,6 @@ USE restaurant;
 
 -- Tables creation
 
--- role
-DROP TABLE IF EXISTS role;
-CREATE TABLE IF NOT EXISTS role(
-    role_id TINYINT(2) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    role_name VARCHAR(25) NOT NULL,
-    role_description VARCHAR(255)
-) ENGINE = InnoDB;
-
 -- user
 DROP TABLE IF EXISTS user;
 CREATE TABLE IF NOT EXISTS user(
@@ -22,8 +14,7 @@ CREATE TABLE IF NOT EXISTS user(
     user_email VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
     user_password2 VARCHAR(255) NOT NULL,
-    role_id TINYINT(2) NOT NULL DEFAULT 2,
-    CONSTRAINT fk_user_role_id FOREIGN KEY (role_id) REFERENCES role (role_id)
+    user_role ENUM('admin', 'client') NOT NULL
 ) ENGINE = InnoDB;
 
 -- admin
@@ -153,6 +144,3 @@ CREATE TABLE IF NOT EXISTS menu_formula(
     CONSTRAINT fk_menu_formula_formula_id FOREIGN KEY (formula_id) REFERENCES formula (formula_id)
 ) ENGINE = InnoDB; 
 
---Insertion of two roles
-INSERT INTO role (role_name, role_description) VALUES ('admin', 'Gérer le contenu et les utilisateur du site.');
-INSERT INTO role (role_name, role_description) VALUES ('client', 'Gérer son profil utilisateur et pouvoir réserver.');
