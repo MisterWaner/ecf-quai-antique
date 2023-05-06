@@ -1,104 +1,133 @@
 //Import module
-import User from "../models/User.js";
-import bcrypt from 'bcrypt';
+import db from "../db/sequelize.config.js";
+import bcrypt from "bcrypt";
 import { config } from "dotenv";
 config();
 
 //Read
-const getUser = async (req, res, next) => {
+const getUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-
         //Check if id is OK
         if (!id) {
-            return res.status(400).json({ message: "Missing parameter" });
+            res.sendStatus(400).json({ message: "Missing parameter" });
         }
 
-        const [user] = await User.fetchById(id);
-        res.status(200).json(user);
+        //retrieve user
+        const user = await db.User.findOne({
+            where: { id: id },
+            raw: true,
+        });
+        if (user === null) {
+            res.status(400).json({ message: "This user does not exists" });
+        }
+
+        res.status(200).json({ data: user });
     } catch (error) {
-        if (!error.statusCode) {
-            error.statusCode = 500;
-        }
-
-        next(error);
+        res.status(500).json({ message: "Database Error", error });
     }
 };
 
-const getAllUsers = async (req, res, next) => {
+const getAllUsers = async (req, res) => {
     try {
-        const [allUsers] = await User.fetchAll();
+        const allUsers = await db.User.findAll();
         res.status(200).json(allUsers);
     } catch (error) {
-        if (!error.statusCode) {
-            error.statusCode = 500;
-        }
-
-        next(error);
+        res.status(500).json({ message: "Database Error", error });
     }
 };
 
 //Create
-const createUser = async (req, res, next) => {
+const createUser = async (req, res) => {
     try {
-        const { email, password, confirmation, role } = req.body;
+        const { email, password, confirmation, role, phone } = req.body;
 
         //Check validation for datas
-        if (!email || !password || !confirmation) {
-            res.satus(400).json("missing data");
+        if (!email || !password || !confirmation || !phone) {
+            res.status(400).json("missing data");
         } else if (password !== confirmation) {
-            res.satus(400).json("Password & confirmation must be the same !");
+            res.status(400).json("Password & confirmation must be the same !");
+        }
+
+        //check if user already exists
+        let user = await db.User.findOne({
+            where: { email: email },
+            raw: true,
+        });
+        if (user !== null) {
+            return res
+                .status(409)
+                .json({ message: `The user ${email} already exists` });
         }
 
         //hash password
-        async function hashPassword(password, confirmation) {
-            let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND));
-            password = hash;
-            confirmation = password;
-        }
+        db.User.beforeCreate(async (user, options) => {
+            let hash = await bcrypt.hash(
+                user.password,
+                parseInt(process.env.BCRYPT_SALT_ROUND)
+            ); //hash function
+            user.password = hash;
+            user.confirmation = user.password;
+        });
 
-        hashPassword(password, confirmation)
-
-        
-
-        //create user
-        const user = await User.post(email, password, confirmation, role);
+        //user creation
+        user = await db.User.create({
+            email: email,
+            password: password,
+            confirmation: confirmation,
+            phone: phone,
+            role: role,
+        });
 
         res.json({ message: "User created", data: user });
-        
     } catch (error) {
-        next(error);
+        res.status(500).json({ message: "Database Error", error });
     }
 };
 
 //Update
-const updateUser = async (req, res, next) => {
+const updateUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const { email, password, confirmation } = req.body;
+        const { email, password, confirmation, firstname, lastname } = req.body;
 
         //Check if id is ok
         if (!id) {
             return res.status(400).json({ message: "Missing parameter" });
         }
 
-        //Retrive the user
-        let user = await User.fetchById(id);
+        //retrieve the user
+        let user = await db.User.findOne(req.body, {
+            where: { id: id },
+            raw: true,
+        });
 
         if (user === null) {
             res.status(404).json({ message: "This user does not exist" });
         }
 
         //update
-        user = await User.update(id, email, password, confirmation);
+        user = await db.User.update(
+            {
+                email: email,
+                password: password,
+                confirmation: confirmation,
+                firstname: firstname,
+                lastname: lastname
+            },
+            {
+                where: { id: id },
+            }
+        );
+        
 
         res.json({ message: "User Updated", data: user });
     } catch (error) {
-        next(error);
+        res.status(500).json({ message: "Database Error", error });
     }
 };
 
-const deleteUser = async (req, res, next) => {
+const deleteUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         //Check if id is OK
@@ -106,14 +135,14 @@ const deleteUser = async (req, res, next) => {
             return res.status(400).json({ message: "Missing parameter" });
         }
 
-        const [deleteResponse] = await User.delete(id);
-        res.status(200).json(deleteResponse);
+        //deletation of user
+        const user = await db.User.destroy({
+            where: { id: id },
+            force: true,
+        });
+        res.status(200).json(user);
     } catch (error) {
-        if (!error.statusCode) {
-            error.statusCode = 500;
-        }
-
-        next(error);
+        res.status(500).json({ message: "Database Error", error });
     }
 };
 

@@ -1,62 +1,67 @@
 //Import module
-import db from "../db/db.config.js";
-import bcrypt from "bcrypt";
-import { config } from "dotenv";
-config()
+import { DataTypes, Model } from "sequelize";
 
 //User model
-class User {
-    email = "";
-    password = "";
-    confirmation = "";
-    role = "client";
 
-    constructor(email, password, confirmation, role ) {
-        this.email = email,
-        this.password = password,
-        this.confirmation = confirmation,
-        this.role = role
-    }
+export default (sequelize) => {
+    class User extends Model {}
 
-    static post = (email, password, confirmation, role) => {
-        return db.query(
-        `INSERT INTO user(
-            user_email,
-            user_password,
-            user_password2,
-            user_role) VALUES (?,?,?,?);
-        `,[email, password, confirmation, role]);
-    };
+    User.init(
+        {
+            id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true,
+                allowNull: false,
+            },
+            email: {
+                type: DataTypes.STRING,
+                validate: {
+                    isEmail: true, //data validation
+                },
+                allowNull: false,
+                unique: true, //unique email
+            },
+            password: {
+                type: DataTypes.STRING(64),
+                is: /^[0-9a-z]{64}$/i, //constraint regex
+                allowNull: false,
+            },
+            confirmation: {
+                type: DataTypes.STRING(64),
+                is: /^[0-9a-z]{64}$/i, //constraint regex
+                allowNull: false,
+            },
+            role: {
+                type: DataTypes.ENUM,
+                allowNull: true,
+                values: ["admin", "client"],
+                defaultValue: "client",
+            },
+            firstname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            lastname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            phone: {
+                type: DataTypes.INTEGER(10),
+                validate: {
+                    isNumeric: true, //Data validation
+                },
+                allowNull: false,
+                unique: true,
+            },
+        },
+        {
+            modelName: "user",
+            tableName: "users",
+            timestamps: false,
+            sequelize
+        }
+    );
 
-    static fetchAll = () => {
-        return db.query("SELECT * FROM user;");
-    };
-
-    static fetchById = (id) => {
-        return db.query("SELECT * FROM user WHERE user_id = ?;", [id]);
-    };
-
-    static update = (id, email, password, confirmation) => {
-        return db.query(
-        `UPDATE user
-        SET user_email = ?, user_password = ?, user_password2 = ?
-        WHERE user_id = ?;
-        `,[id, email, password, confirmation]);
-    };
-
-    static delete = (id) => {
-        return db.query("DELETE FROM user WHERE user_id = ?;", [id]);
-    };
-
-    
-
-    static checkPassword = async (password, original) => {
-        await bcrypt.compare(password, original);
-    }
-
-    static fetchByMail(email) {
-        return db.query(`SELECT * FROM user WHERE user_email = ?;`, [email]);
-    }
+    return User;
 }
-
-export default User;

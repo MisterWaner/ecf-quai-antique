@@ -1,0 +1,37 @@
+//Import module
+import { DataTypes, Model } from "sequelize";
+
+export default (sequelize) => {
+    class Formula extends Model {}
+
+    Formula.init(
+        {
+            id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true,
+                allowNull: false,
+            },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            description: {
+                type: DataTypes.TEXT,
+                allowNull: false,
+            },
+            price: {
+                type: DataTypes.FLOAT(2, 2).UNSIGNED,
+                allowNull: false,
+            },
+        },
+        {
+            modelName: "formula",
+            tableName: "formulas",
+            timestamps: false,
+            sequelize,
+        }
+    );
+
+    return Formula;
+};
