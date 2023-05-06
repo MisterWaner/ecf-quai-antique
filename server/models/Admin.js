@@ -17,7 +17,7 @@ export default (sequelize) => {
             modelName: "admin",
             tableName: "admins",
             timestamps: false,
-            sequelize,
+            sequelize
         }
     );
 

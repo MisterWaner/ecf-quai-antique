@@ -5,6 +5,7 @@ import { config } from "dotenv";
 import db from "./db/sequelize.config.js";
 
 import userRouter from "./routes/userRoute.js";
+import router from "./routes/generalRouter.js";
 
 //Init server
 config();
@@ -21,6 +22,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use('/', router)
+
 
 db.sequelize
     .authenticate()

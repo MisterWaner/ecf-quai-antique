@@ -1,6 +1,5 @@
 //Import module
 import db from "../db/sequelize.config.js";
-import bcrypt from "bcrypt";
 import { config } from "dotenv";
 config();
 
@@ -32,54 +31,6 @@ const getAllUsers = async (req, res) => {
     try {
         const allUsers = await db.User.findAll();
         res.status(200).json(allUsers);
-    } catch (error) {
-        res.status(500).json({ message: "Database Error", error });
-    }
-};
-
-//Create
-const createUser = async (req, res) => {
-    try {
-        const { email, password, confirmation, role, phone } = req.body;
-
-        //Check validation for datas
-        if (!email || !password || !confirmation || !phone) {
-            res.status(400).json("missing data");
-        } else if (password !== confirmation) {
-            res.status(400).json("Password & confirmation must be the same !");
-        }
-
-        //check if user already exists
-        let user = await db.User.findOne({
-            where: { email: email },
-            raw: true,
-        });
-        if (user !== null) {
-            return res
-                .status(409)
-                .json({ message: `The user ${email} already exists` });
-        }
-
-        //hash password
-        db.User.beforeCreate(async (user, options) => {
-            let hash = await bcrypt.hash(
-                user.password,
-                parseInt(process.env.BCRYPT_SALT_ROUND)
-            ); //hash function
-            user.password = hash;
-            user.confirmation = user.password;
-        });
-
-        //user creation
-        user = await db.User.create({
-            email: email,
-            password: password,
-            confirmation: confirmation,
-            phone: phone,
-            role: role,
-        });
-
-        res.json({ message: "User created", data: user });
     } catch (error) {
         res.status(500).json({ message: "Database Error", error });
     }
@@ -146,4 +97,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export { getUser, getAllUsers, createUser, updateUser, deleteUser };
+export { getUser, getAllUsers, updateUser, deleteUser };

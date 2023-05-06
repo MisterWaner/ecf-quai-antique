@@ -1,5 +1,6 @@
 //Import module
 import { DataTypes, Model } from "sequelize";
+import User from "./User.js";
 
 export default (sequelize) => {
     class Client extends Model {}
@@ -14,8 +15,32 @@ export default (sequelize) => {
             },
             allergies: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
+            phone: {
+                type: DataTypes.INTEGER(10),
+                validate: {
+                    isNumeric: true, //Data validation
+                },
+                allowNull: true,
+                unique: true,
+            },
+            firstname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            lastname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "users",
+                    key: "id"
+                }
+            }
         },
         {
             modelName: "client",
