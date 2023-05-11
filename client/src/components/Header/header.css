@@ -1,0 +1,49 @@
+.header {
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    backdrop-filter: blur(2px);
+}
+.logo-container img{
+    width: 200px;
+}
+.nav-container {
+    width: 100%;
+    display: flex;
+    line-height: 200px;
+    list-style-type: none;
+    justify-content: space-around;
+}
+.nav-item {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+.nav-item a {
+    text-decoration: none;
+    color: #000;
+}
+.nav-item a:hover {
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+.btn {
+    background-color: #FCDEC0;
+    height: fit-content;
+    margin-right: 35px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #B4846C;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Arsenal', sans-serif;
+    align-self: center;
+    cursor: pointer;
+}
+.btn:active {
+    transform: scale(0.98);
+}

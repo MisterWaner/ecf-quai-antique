@@ -1,13 +1,12 @@
 main {
     max-width: 1280px;
     margin: 0 auto;
-    height: 100vh;
+    height: 100%;
 }
 
 .hero-section {
     background-color: #f1f1f1;
-    background: url("../../assets/restaurant.jpg") center center no-repeat;
-    backdrop-filter: grayscale(30%);
+    background: url("../../assets/Images/restaurant.jpg") center center no-repeat;
     height: 100%;
 }
 .main-title {
@@ -22,4 +21,15 @@ main {
     color: #f1f1f1;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
+}
+
+.carte-section,
+.menus-section {
+    padding: 15px 25px
+}
+.carte-section {
+    background-color: #E5B299;
+}
+.menus-section {
+    background-color: #FCDEC0 ;
 }
