@@ -1,7 +1,12 @@
+import './about.css';
 
 const About = () => {
   return (
-    <div>À propos</div>
+    <>
+    <main>
+        <h1>À Propos</h1>
+    </main>
+    </>
   )
 }
 

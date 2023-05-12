@@ -1,8 +1,12 @@
-
+import './equipe.css';
 
 const Equipe = () => {
   return (
-    <div>Equipe</div>
+    <>
+    <main>
+        <h1>L&apos;équipe</h1>
+    </main>
+    </>
   )
 }
 

@@ -1,8 +1,12 @@
-
+import './contact.css';
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+    <main>
+        <h1>Contact</h1>
+    </main>
+    </>
   )
 }
 

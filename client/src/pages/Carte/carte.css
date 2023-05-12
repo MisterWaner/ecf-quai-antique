@@ -1,0 +1,11 @@
+.section-carte {
+    margin: 25px 0;
+}
+.section-title {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
