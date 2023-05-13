@@ -1,0 +1,32 @@
+.team-title {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.team-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 25px 0;
+}
+.team-member {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+.team-member-pic {
+    width: 500px;
+    margin-right: 25px;
+}
+.team-member-pic img {
+    width: 100%;
+    border-radius: 25%;
+}
+.team-member-about {
+    padding: 0 25px;
+}
+.team-member-name {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
