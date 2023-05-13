@@ -1,0 +1,12 @@
+.menu-card {
+    width: 300px;
+    background-color: #E5B299;
+    margin: 25px 25px;
+    padding: 25px 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #7D5A50 ;
+    justify-self: center;
+}
+.menu-title {
+    text-align: center;
+}

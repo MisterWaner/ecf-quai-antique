@@ -8,7 +8,7 @@
     backdrop-filter: blur(5px);
     border-bottom: 1px solid;
 }
-.logo-container img{
+.logo-container img {
     width: 150px;
 }
 .nav-container {
@@ -19,19 +19,26 @@
     justify-content: space-around;
 }
 .nav-item {
-    font-family: 'Pinyon Script', cursive;
+    font-family: "Pinyon Script", cursive;
     font-size: 1.7rem;
     font-weight: bold;
 }
 .nav-item a {
     text-decoration: none;
-    color: #000;
-}
-.nav-item a:hover,
-.btn:hover {
     color: #f1f1f1;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
+}
+.nav-item a:hover {
+    color: #000;
+    text-shadow: -1px 1px 0 #f1f1f1, 1px 1px 0 #f1f1f1, 1px -1px 0 #f1f1f1,
+        -1px -1px 0 #f1f1f1;
+    text-decoration: underline;
+}
+.nav-item a:focus{
+    color: #7D5A50;
+    text-shadow: -1px 1px 0 #f1f1f1, 1px 1px 0 #f1f1f1, 1px -1px 0 #f1f1f1,
+        -1px -1px 0 #f1f1f1;
 }
 .btn {
     background-color: transparent;
@@ -42,12 +49,15 @@
     border: 1px solid #000;
     font-size: 1.2rem;
     font-weight: bold;
-    font-family: 'Arsenal', sans-serif;
+    font-family: "Arsenal", sans-serif;
     align-self: center;
     cursor: pointer;
 }
 .btn:hover {
-    background-color: #7D5A50;
+    background-color: #7d5a50;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
 }
 .btn:active {
     transform: scale(0.98);

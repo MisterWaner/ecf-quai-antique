@@ -1,0 +1,15 @@
+.formule-container {
+    margin-top: 10px;
+}
+.formule-title {
+    text-align: start;
+}
+.formule-body {
+    display: flex;
+}
+.formule-description {
+    font-style: italic;
+}
+.formule-price {
+    font-weight: bold;
+}
