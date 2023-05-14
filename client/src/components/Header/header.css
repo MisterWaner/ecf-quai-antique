@@ -58,6 +58,7 @@
     color: #f1f1f1;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
+    
 }
 .btn:active {
     transform: scale(0.98);

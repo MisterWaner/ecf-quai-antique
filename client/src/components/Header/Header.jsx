@@ -1,8 +1,16 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Images/logo-quai-antique.png";
 
 const Header = () => {
+
+    const navigate = useNavigate()
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        navigate('/connexion');
+    }
+
     return (
         <header className="header">
             <div className="logo-container">
@@ -29,9 +37,11 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <button className="btn">Réservez</button>
+            <button onClick={handleClick} className="btn">
+                Réservez
+            </button>
         </header>
     );
 };
 
-export  default Header;
+export default Header;
