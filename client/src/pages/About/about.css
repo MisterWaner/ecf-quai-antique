@@ -1,0 +1,24 @@
+.about-section {
+    margin: 25px 0;
+}
+.about-section h2 {
+    font-size: 2rem;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+.planning-table {
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid #000;
+    width: 500px;
+    height: 300px;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+.planning-table thead {
+    background-color: #7d5a50;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+    text-transform: uppercase;
+}

@@ -1,0 +1,25 @@
+.contact-section {
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    grid-template-rows: 2fr 2fr;
+}
+.phone, 
+.mail,
+.adress {
+    display: flex;
+    width: 300px;
+    align-items: start;
+    margin: 15px 0;
+}
+.phone img,
+.mail img,
+.adress img {
+    width: 25px;
+    margin-right: 25px;
+}
+.phone p,
+.mail p,
+.adress address {
+    font-size: 1.25rem;
+}
