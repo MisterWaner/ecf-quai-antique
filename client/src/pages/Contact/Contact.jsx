@@ -26,6 +26,11 @@ const Contact = () => {
                         <p>contact@quai-antique.fr</p>
                     </div>
                 </section>
+                <section className="photo-section">
+                    <img src="/images/place-des-elephants.jpg" alt="" />
+                    <img src="/images/drapeaux-savoie.jpg" alt="" />
+                    <img src="/images/fondue.jpg" alt="" />
+                </section>
             </main>
         </>
     );

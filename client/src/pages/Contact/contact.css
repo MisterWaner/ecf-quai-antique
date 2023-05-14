@@ -23,3 +23,14 @@
 .adress address {
     font-size: 1.25rem;
 }
+.photo-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    width: 100%;
+}
+.photo-section img {
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #7D5A50 ;
+}
