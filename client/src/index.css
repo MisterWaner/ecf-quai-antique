@@ -121,7 +121,8 @@ footer {
 }
 
 /************ Main Content *************/
-.public-main {
+.public-main,
+.account-main {
     max-width: 1280px;
     margin: 155px auto 0;
     flex-grow: 1;

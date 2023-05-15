@@ -11,9 +11,36 @@
     position: fixed;
     height: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
-.sidebar-nav h2 {
-    margin: 20px 0;
-    font-size: 2rem;
-
+.sidebar-logo-container {
+    width: 100%;
+    margin: 0 auto;
+}
+.sidebar-logo-container img {
+    width: 100%;
+}
+.sidebar-nav-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.sidebar-nav-item {
+    font-size: 1.5rem;
+}
+.sidebar-nav-item a {
+    text-decoration: none;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+    
+}
+.sidebar-nav-item a:hover {
+    color: #000;
+    text-shadow: -1px 1px 0 #f1f1f1, 1px 1px 0 #f1f1f1, 1px -1px 0 #f1f1f1,
+        -1px -1px 0 #f1f1f1;
+    text-decoration: underline;
 }

@@ -2,7 +2,7 @@ import "./reservation.css";
 
 const Reservation = () => {
     return (
-        <main>
+        <main className="account-main">
             <h1>Réservation</h1>
         </main>
     );
