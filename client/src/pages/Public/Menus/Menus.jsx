@@ -4,7 +4,7 @@ import "./menus.css";
 const Menus = () => {
     return (
         <>
-            <main>
+            <main className="public-main">
                 <h1>Les Menus</h1>
                 <section className="menus-section">
                     <Menu />

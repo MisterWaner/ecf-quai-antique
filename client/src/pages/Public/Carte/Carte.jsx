@@ -4,7 +4,7 @@ import Card from "../../../components/Card/Card";
 const Carte = () => {
     return (
         <>
-            <main>
+            <main className="public-main">
                 <h1>La Carte</h1>
                 <section className="section-carte">
                     <h2 className="section-title">Les Entrées</h2>

@@ -4,7 +4,7 @@ import { memberKitchenData, memberServiceData } from "./memberData";
 const Equipe = () => {
     return (
         <>
-            <main>
+            <main className="public-main">
                 <h1>L&apos;équipe</h1>
                 <section className="team-section">
                     <h2 className="team-title">La Cuisine</h2>

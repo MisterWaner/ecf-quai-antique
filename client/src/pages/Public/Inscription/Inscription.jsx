@@ -2,7 +2,7 @@ import "./inscription.css";
 
 const Inscription = () => {
     return (
-        <main>
+        <main className="public-main">
             <h1>Inscription</h1>
             <section className="form-section">
                 <form action="">

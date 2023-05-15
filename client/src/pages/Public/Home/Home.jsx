@@ -2,7 +2,7 @@ import "./home.css";
 
 const Home = () => {
     return (
-        <main>
+        <main className="public-main">
             <section className="hero-section">
                 <h1 className="main-title">Bienvenue au Quai Antique</h1>
             </section>

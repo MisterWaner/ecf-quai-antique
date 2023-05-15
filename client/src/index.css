@@ -121,9 +121,14 @@ footer {
 }
 
 /************ Main Content *************/
-main {
+.public-main {
     max-width: 1280px;
     margin: 155px auto 0;
+    flex-grow: 1;
+}
+.admin-main {
+    padding: 25px;
+    width: calc(100% - 15vw);
 }
 h1 {
     text-align: center;

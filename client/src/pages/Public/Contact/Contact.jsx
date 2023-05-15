@@ -6,7 +6,7 @@ import Location from "../../../assets/icon/location-dot-solid.svg";
 const Contact = () => {
     return (
         <>
-            <main>
+            <main className="public-main">
                 <h1>Contact</h1>
                 <section className="contact-section">
                     <div className="phone">
