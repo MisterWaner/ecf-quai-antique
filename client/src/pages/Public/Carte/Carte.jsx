@@ -1,5 +1,5 @@
 import "./carte.css";
-import Card from "../../components/Card/Card";
+import Card from "../../../components/Card/Card";
 
 const Carte = () => {
     return (

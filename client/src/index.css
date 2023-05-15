@@ -5,15 +5,122 @@
     padding: 0;
 }
 
-body {
+html,body, #root {
     font-family: 'Arsenal', sans-serif;
     height: 100vh; 
     background-color: #FCDEC0 ;
 }
-.app {
-    margin: 0 auto;
-    min-height: 100%;
+#root {
+    display: flex;
+    flex-direction: column;
 }
+
+/***************** Header ******************/
+.header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid;
+}
+.logo-container img {
+    width: 150px;
+}
+.nav-container {
+    width: 100%;
+    display: flex;
+    line-height: 150px;
+    list-style-type: none;
+    justify-content: space-around;
+}
+.nav-item {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+.nav-item a {
+    text-decoration: none;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+.nav-item a:hover {
+    color: #000;
+    text-shadow: -1px 1px 0 #f1f1f1, 1px 1px 0 #f1f1f1, 1px -1px 0 #f1f1f1,
+        -1px -1px 0 #f1f1f1;
+    text-decoration: underline;
+}
+.nav-item a:focus{
+    color: #7D5A50;
+    text-shadow: -1px 1px 0 #f1f1f1, 1px 1px 0 #f1f1f1, 1px -1px 0 #f1f1f1,
+        -1px -1px 0 #f1f1f1;
+}
+.btn {
+    background-color: transparent;
+    height: fit-content;
+    margin-right: 35px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "Arsenal", sans-serif;
+    align-self: center;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #7d5a50;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+    
+}
+.btn:active {
+    transform: scale(0.98);
+}
+
+/****************** Footer *********************/
+footer {
+    height: 150px;
+    background-color: #7D5A50;
+    border-top: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+.footer-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.social-logos, .payment-logos {
+    width: 150px;
+}
+.text-container p {
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+.social-logos img,
+.payment-logos img {
+    width: 25px;
+    margin-right: 25px;
+}
+.social-logos img:nth-child(1),
+.payment-logos img:nth-child(1) {
+    width: 20px;
+}
+.social-logos img:nth-child(2),
+.payment-logos img:nth-child(3) {
+    margin-right: 0px;
+}
+
+/************ Main Content *************/
 main {
     max-width: 1280px;
     margin: 155px auto 0;

@@ -1,4 +1,3 @@
-import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Images/logo-quai-antique.png";
 

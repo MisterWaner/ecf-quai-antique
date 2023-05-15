@@ -1,7 +1,7 @@
 import "./contact.css";
-import Phone from "../../assets/icon/phone-solid.svg";
-import At from "../../assets/icon/at-solid.svg";
-import Location from "../../assets/icon/location-dot-solid.svg";
+import Phone from "../../../assets/icon/phone-solid.svg";
+import At from "../../../assets/icon/at-solid.svg";
+import Location from "../../../assets/icon/location-dot-solid.svg";
 
 const Contact = () => {
     return (

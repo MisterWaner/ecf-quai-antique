@@ -1,4 +1,3 @@
-import "./footer.css";
 import Facebook from "../../assets/icon/facebook-f.svg";
 import Insta from "../../assets/icon/instagram.svg";
 import Euro from "../../assets/icon/euro-sign-solid.svg";
