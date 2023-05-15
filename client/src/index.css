@@ -5,14 +5,14 @@
     padding: 0;
 }
 
-html, body {
+body {
     font-family: 'Arsenal', sans-serif;
     height: 100vh; 
     background-color: #FCDEC0 ;
 }
 .app {
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100%;
 }
 main {
     max-width: 1280px;

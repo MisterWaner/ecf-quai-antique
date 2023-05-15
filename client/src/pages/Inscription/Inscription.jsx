@@ -1,9 +1,11 @@
-import './inscription.css';
+import "./inscription.css";
 
 const Inscription = () => {
-  return (
-    <div>Inscription</div>
-  )
-}
+    return (
+        <main>
+            <h1>Inscription</h1>
+        </main>
+    );
+};
 
-export default Inscription
+export default Inscription;

@@ -8,6 +8,8 @@ import Equipe from "./pages/Equipe/Equipe";
 import Contact from "./pages/Contact/Contact";
 import Connexion from "./pages/Connexion/Connexion";
 import Inscription from "./pages/Inscription/Inscription";
+import Reservation from "./pages/Rerservation/Reservation";
+import Admin from "./pages/Admin/Admin";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -24,6 +26,8 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/connexion" element={<Connexion/>} />
                 <Route path="/inscription" element={<Inscription/>} />
+                <Route path="/reservation" element={<Reservation/>} />
+                <Route path="/admin" element={<Admin/>} />
             </Routes>
             <Footer />
         </div>

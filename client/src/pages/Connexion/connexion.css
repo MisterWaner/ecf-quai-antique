@@ -1,0 +1,61 @@
+.form-section {
+    margin: 25px 0 50px;
+}
+.form-section form {
+    margin: 25px auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.input-container label {
+    font-size: 1.25rem;
+    padding: 5px;
+}
+.input-container input {
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 5px 5px 0 0;
+    font-size: 1.15rem;
+    border-bottom: 1px solid #000;
+    padding: 10px;
+    background-color: #E5B299;
+    font-family: "Arsenal", sans-serif;
+}
+.form-section button {
+    padding: 10px;
+    font-size: 1.05rem;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: transparent;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Arsenal", sans-serif;
+}
+.form-section button:hover {
+    background-color: #7d5a50;
+    color: #f1f1f1;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+.form-section button:active {
+    transform: scale(0.98);
+}
+.form-section p {
+    text-align: center;
+    font-size: 1.05rem;
+}
+.form-section p > a {
+    text-decoration: none;
+    color: #7d5a50;
+    font-weight: bold;
+}
+.form-section p > a:hover {
+    text-decoration: underline;
+}
