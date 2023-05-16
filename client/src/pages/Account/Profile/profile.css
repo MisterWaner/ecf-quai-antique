@@ -1,8 +1,27 @@
 .profile-section {
     margin: 25px 0;
 }
+.profile-section h2 {
+    text-decoration: underline;
+}
 .info-container {
-    width: 100%;
-    display: flex;
-
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    margin-top: 25px;
+}
+.info {
+    width: 25vw;
+}
+.info-container table {
+    border: 2px solid #000;
+    border-radius: 10px;
+    
+}
+.label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 10px;
+}
+.value {
+    font-size: 1.2rem;
 }
