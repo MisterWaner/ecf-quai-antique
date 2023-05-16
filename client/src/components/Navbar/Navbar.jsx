@@ -13,10 +13,10 @@ const Navbar = () => {
             <nav>
                 <ul className="nav-container">
                     <li className="nav-item">
-                        <Link to="/account/profile">Profil</Link>
+                        <Link to="/mon-compte">Profil</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/account/reservation">Réservation</Link>
+                        <Link to="/mon-compte/reservation">Réservation</Link>
                     </li>
                 </ul>
             </nav>

@@ -9,8 +9,8 @@ const AccountRoute = () => {
     <>
         <Routes>
             <Route element={<AccountLayout />}>
-                <Route path="/account/reservation" element={<Reservation />}/>
-                <Route path="/account/profile" element={<Profile />}/>
+                <Route path="/mon-compte" element={<Profile />}/>
+                <Route path="/mon-compte/reservation" element={<Reservation />}/>
             </Route>
         </Routes>
     </>
