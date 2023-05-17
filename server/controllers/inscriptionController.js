@@ -11,7 +11,7 @@ const createUser = async (req, res) => {
 
         //Check validation for datas
         if (!email || !password || !confirmation) {
-            return res.status(400).json("missing data");
+            return res.send("missing data");
         } else if (password !== confirmation) {
             return res
                 .status(400)

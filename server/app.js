@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
     res.send("API en ligne");
 });
 
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 app.use('/', router)
 
 
