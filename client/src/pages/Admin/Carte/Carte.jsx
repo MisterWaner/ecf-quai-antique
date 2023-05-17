@@ -9,7 +9,7 @@ const DashboardCarte = () => {
                 <div className="carte-creation-container">
                     <form action="">
                         <div className="input-container">
-                            <label htmlFor="titre">Titre:</label>
+                            <label htmlFor="titre">Nom du plat:</label>
                             <input type="text" name="titre" id="titre" />
                         </div>
                         <div className="input-container">
@@ -27,7 +27,6 @@ const DashboardCarte = () => {
                         <div className="button-container">
                             <button type="submit">Enregistrer</button>
                         </div>
-
                     </form>
                 </div>
             </section>

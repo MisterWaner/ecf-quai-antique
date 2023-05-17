@@ -1,0 +1,25 @@
+.horaires-management {
+    margin-left: 25px;
+}
+.horaires-management h2 {
+    text-decoration: underline;
+}
+.horaires-creation-container {
+    margin: 25px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.horaires-creation-container form {
+    width: 75%;
+}
+.checkbox-container {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: left;
+}
+.checkbox-container input {
+    margin-right: 20px;
+}
+.checkbox-container label {
+    margin-right: 20px;
+}

@@ -1,14 +1,14 @@
-.carte-management {
+.menus-management {
     margin-left: 25px;
 }
-.carte-management h2 {
+.menus-management h2 {
     text-decoration: underline;
 }
-.carte-creation-container {
+.menus-creation-container {
     margin: 25px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.carte-creation-container form {
+.menus-creation-container form {
     width: 75%;
 }

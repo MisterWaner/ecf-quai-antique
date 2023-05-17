@@ -93,25 +93,4 @@ input[type="radio"].radio:checked + label {
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
 }
-.button-container button {
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #000;
-    cursor: pointer;
-    font-family: "Arsenal", sans-serif;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: transparent;
-    transition: all 0.2s ease-in-out;
-}
-.button-container button:hover {
-    background-color: #7d5a50;
-    color: #f1f1f1;
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
-        -1px -1px 0 #000;
-}
-.button-container button:active {
-    transform: scale(0.99);
-}
 
