@@ -4,7 +4,7 @@ const Card = () => {
     return (
         <div className="card">
             <div className="card-header">
-                <h3 className="card-title">TItre de la carte</h3>
+                <h3 className="card-title">Titre de la carte</h3>
             </div>
             <div className="card-body">
                 <div className="card-image">

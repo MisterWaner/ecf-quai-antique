@@ -1,0 +1,23 @@
+.carte-management {
+    margin-left: 25px;
+}
+.carte-management h2 {
+    text-decoration: underline;
+}
+.carte-creation-container {
+    margin: 25px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.carte-creation-container form {
+    width: 75%;
+}
+.input-container input[type="file"] {
+    background-color: transparent;
+    border: none;
+}
+.input-container textarea {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #000;
+}
