@@ -51,7 +51,7 @@ const createUser = async (req, res) => {
         if(user.role === "" || user.role === "client") {
             
             console.log('user is client', user)
-            return await db.Client.create(user)
+            return await db.Client.create({userId: user.id})
 
         } else if (user.role === "admin") {
             console.log('user is admin', user);
