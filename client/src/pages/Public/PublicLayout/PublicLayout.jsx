@@ -2,7 +2,7 @@ import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 
-const ClientLayout = () => {
+const PublicLayout = () => {
     return (
         <>
             <Header />
@@ -12,4 +12,4 @@ const ClientLayout = () => {
     );
 };
 
-export default ClientLayout;
+export default PublicLayout;

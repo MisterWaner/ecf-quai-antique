@@ -18,5 +18,3 @@ const getAdmin = async (req, res) => {
     }
 };
 
-
-export {getAdmin}

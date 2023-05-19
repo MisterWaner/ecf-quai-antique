@@ -37,7 +37,27 @@ export default (sequelize) => {
                 allowNull: true,
                 values: ["admin", "client"],
                 defaultValue: "client",
-            }
+            },
+            allergies: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            phone: {
+                type: DataTypes.INTEGER(10),
+                validate: {
+                    isNumeric: true, //Data validation
+                },
+                allowNull: true,
+                unique: true,
+            },
+            firstname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            lastname: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
         },
         {
             modelName: "user",

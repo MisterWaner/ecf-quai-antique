@@ -1,6 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 //PublicLayout
-import ClientLayout from './pages/Public/ClientLayout/ClientLayout';
+import PublicLayout from "./pages/Public/PublicLayout/PublicLayout";
 import Home from './pages/Public/Home/Home';
 import Carte from './pages/Public/Carte/Carte';
 import Menus from './pages/Public/Menus/Menus';
@@ -18,7 +18,7 @@ import DashboardReservations from "./pages/Admin/Reservations/DashboardReservati
 import Horaires from "./pages/Admin/Horaires/Horaires";
 import Photos from "./pages/Admin/Photos/Photos";
 //AccountLayout
-import AccountLayout from "./pages/Account/AccountLayout/AccountLayout";
+import RegisteredLayout from "./pages/Account/RegisteredLayout/RegisteredLayout";
 import Profile from "./pages/Account/Profile/Profile";
 import Reservation from "./pages/Account/Rerservation/Reservation";
 
@@ -28,7 +28,7 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-            <Route path="/" element={<ClientLayout />}>
+            <Route path="/" element={<PublicLayout />}>
                 <Route index element={<Home />} />
                 <Route path="/carte" element={<Carte />} />
                 <Route path="/menus" element={<Menus />} />
@@ -46,7 +46,7 @@ function App() {
                 <Route path="/dashboard/reservations" element={<DashboardReservations />}/>
                 <Route path="/dashboard/photos" element={<Photos />}/>
             </Route>
-            <Route path="/mon-compte" element={<AccountLayout />}>
+            <Route path="/mon-compte" element={<RegisteredLayout />}>
                 <Route index element={<Profile />}/>
                 <Route path="/mon-compte/reservation" element={<Reservation />}/>
             </Route>

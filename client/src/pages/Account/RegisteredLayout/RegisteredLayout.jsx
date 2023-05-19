@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 
-const AccountLayout = () => {
+const RegisteredLayout = () => {
     return (
         <>
             <Navbar />
@@ -12,4 +12,4 @@ const AccountLayout = () => {
     );
 };
 
-export default AccountLayout;
+export default RegisteredLayout;

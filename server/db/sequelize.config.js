@@ -3,8 +3,6 @@ import { config } from "dotenv";
 config();
 
 import User from "../models/User.js";
-import Admin from "../models/Admin.js";
-import Client from "../models/Client.js";
 import Category from "../models/Category.js";
 import Dish from "../models/Dish.js";
 import Formula from "../models/Formula.js";
@@ -34,8 +32,6 @@ const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.User = User(sequelize);
-db.Admin = Admin(sequelize);
-db.Client = Client(sequelize)
 db.Category = Category(sequelize);
 db.Dish = Dish(sequelize);
 db.Formula = Formula(sequelize);
@@ -48,18 +44,12 @@ db.Slot = Slot(sequelize);
 db.Permission = Permission(sequelize);
 
 
-
-
-db.Admin.belongsTo(db.User);
-db.User.hasMany(db.Admin);
-db.Client.belongsTo(db.User);
-db.User.hasMany(db.Client);
-db.Client.hasMany(db.Reservation);
-db.Reservation.belongsTo(db.Client);
+db.User.hasMany(db.Reservation);
+db.Reservation.belongsTo(db.User);
 db.Slot.hasMany(db.Reservation);
 db.Reservation.belongsTo(db.Slot);
-db.Admin.hasMany(db.Permission);
-db.Permission.belongsTo(db.Admin);
+db.User.hasMany(db.Permission);
+db.Permission.belongsTo(db.User);
 db.Category.hasMany(db.Dish);
 db.Dish.belongsTo(db.Category);
 db.Dish.hasMany(db.Image);

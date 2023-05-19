@@ -28,7 +28,7 @@ const createUser = async (req, res) => {
                 .status(409)
                 .json({ message: `The user ${email} already exists` });
         }
-
+        
         //hash password
         db.User.beforeCreate(async (user, options) => {
             let hash = await bcrypt.hash(
@@ -47,20 +47,8 @@ const createUser = async (req, res) => {
             confirmation: confirmation,
             role: role,
         });
-
-        if(user.role === "" || user.role === "client") {
-            
-            console.log('user is client', user)
-            return await db.Client.create({userId: user.id})
-
-        } else if (user.role === "admin") {
-            console.log('user is admin', user);
-
-            return await db.Admin.create({userId : user.id})
-        }
-
-        return res.json({message: 'User created', data: user});
-        
+        return res.json({message: 'User created', data: user}); 
+          
     } catch (error) {
         return res.status(500).json({ message: "Database Error", error });
     }
