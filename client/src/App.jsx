@@ -26,6 +26,7 @@ import Photos from "./pages/Admin/Photos/Photos";
 import RegisteredLayout from "./pages/Account/RegisteredLayout/RegisteredLayout";
 import Profile from "./pages/Account/Profile/Profile";
 import Reservation from "./pages/Account/Rerservation/Reservation";
+import AdminPrivateRoutes from "./utils/AdminPrivateRoutes";
 
 function App() {
     const router = createBrowserRouter(
@@ -42,25 +43,33 @@ function App() {
                     <Route path="/inscription" element={<Inscription />} />
                 </Route>
                 <Route path="/dashboard" element={<AdminLayout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route
-                        path="/dashboard/carte"
-                        element={<DashboardCarte />}
-                    />
-                    <Route
-                        path="/dashboard/menus"
-                        element={<DashboardMenus />}
-                    />
-                    <Route path="/dashboard/horaires" element={<Horaires />} />
-                    <Route
-                        path="/dashboard/reservations"
-                        element={<DashboardReservations />}
-                    />
-                    <Route path="/dashboard/photos" element={<Photos />} />
+                    <Route element={<AdminPrivateRoutes />}>
+                        <Route index element={<Dashboard />} />
+                        <Route
+                            path="/dashboard/carte"
+                            element={<DashboardCarte />}
+                        />
+                        <Route
+                            path="/dashboard/menus"
+                            element={<DashboardMenus />}
+                        />
+                        <Route
+                            path="/dashboard/horaires"
+                            element={<Horaires />}
+                        />
+                        <Route
+                            path="/dashboard/reservations"
+                            element={<DashboardReservations />}
+                        />
+                        <Route path="/dashboard/photos" element={<Photos />} />
+                    </Route>
                 </Route>
                 <Route path="/mon-compte" element={<RegisteredLayout />}>
                     <Route index element={<Profile />} />
-                    <Route path="/mon-compte/reservation"element={<Reservation />}/>
+                    <Route
+                        path="/mon-compte/reservation"
+                        element={<Reservation />}
+                    />
                 </Route>
             </>
         )

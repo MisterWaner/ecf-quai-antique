@@ -4,29 +4,6 @@ import { config } from "dotenv";
 config();
 
 //Read
-const getUser = async (req, res) => {
-    try {
-        const id = parseInt(req.params.id);
-        //Check if id is OK
-        if (!id) {
-            res.sendStatus(400).json({ message: "Missing parameter" });
-        }
-
-        //retrieve user
-        const user = await db.User.findOne({
-            where: { id: id },
-            raw: true,
-        });
-        if (user === null) {
-            res.status(400).json({ message: "This user does not exists" });
-        }
-
-        res.status(200).json({ data: user });
-    } catch (error) {
-        res.status(500).json({ message: "Database Error", error });
-    }
-};
-
 const getAllUsers = async (req, res) => {
     try {
         const allUsers = await db.User.findAll();
@@ -97,4 +74,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export { getUser, getAllUsers, updateUser, deleteUser };
+export {  getAllUsers, updateUser, deleteUser };
