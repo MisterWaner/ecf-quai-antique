@@ -27,6 +27,7 @@ import RegisteredLayout from "./pages/Account/RegisteredLayout/RegisteredLayout"
 import Profile from "./pages/Account/Profile/Profile";
 import Reservation from "./pages/Account/Rerservation/Reservation";
 import AdminPrivateRoutes from "./utils/AdminPrivateRoutes";
+import ClientPrivateRoutes from "./utils/ClientPrivateRoutes";
 
 function App() {
     const router = createBrowserRouter(
@@ -65,11 +66,13 @@ function App() {
                     </Route>
                 </Route>
                 <Route path="/mon-compte" element={<RegisteredLayout />}>
-                    <Route index element={<Profile />} />
-                    <Route
-                        path="/mon-compte/reservation"
-                        element={<Reservation />}
-                    />
+                    <Route element={<ClientPrivateRoutes />}>
+                        <Route index element={<Profile />} />
+                        <Route
+                            path="/mon-compte/reservation"
+                            element={<Reservation />}
+                        />
+                    </Route>
                 </Route>
             </>
         )
