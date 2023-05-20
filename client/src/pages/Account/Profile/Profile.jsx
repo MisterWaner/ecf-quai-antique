@@ -15,15 +15,16 @@ const Profile = () => {
                                 name="firstname"
                                 id="firstname"
                                 placeholder="John"
+                                autoComplete="off"
                             />
                         </div>
                         <div className="input-container">
                             <label htmlFor="lastname">Nom :</label>
-                            <input type="text" name="lastname" id="lastname" placeholder="Doe" />
+                            <input type="text" name="lastname" id="lastname" placeholder="Doe" autoComplete="off" />
                         </div>
                         <div className="input-container">
                             <label htmlFor="phone">Téléphone :</label>
-                            <input type="text" name="phone" id="phone" placeholder="06-XX-XX-XX-XX" />
+                            <input type="text" name="phone" id="phone" placeholder="06-XX-XX-XX-XX" autoComplete="off" />
                         </div>
                         <div className="button-container">
                             <button type="submit">Valider</button>
@@ -71,11 +72,11 @@ const Profile = () => {
                             />
                         </div>
                         <div className="input-container">
-                            <label htmlFor="couverts">Nombre d&apos;enfants :</label>
+                            <label htmlFor="enfants">Nombre d&apos;enfants :</label>
                             <input
                                 type="number"
-                                name="couverts"
-                                id="couverts"
+                                name="enfants"
+                                id="enfants"
                                 min="0"
                                 max="10"  
                                 defaultValue="0"

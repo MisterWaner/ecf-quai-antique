@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../../Validation/RegisterValidation";
 import axios from "../../../api/axios";
 
-const INSCRIPTION_URL = "/inscription";
+const INSCRIPTION_URL = "/signin";
 
 const Inscription = () => {
     const {
@@ -20,7 +20,7 @@ const Inscription = () => {
         mode: "onTouched",
     });
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const onSubmit = async (data, event) => {
         event.preventDefault();
         console.log(data);
@@ -29,12 +29,11 @@ const Inscription = () => {
             const res = await axios.post(INSCRIPTION_URL, data);
             if (res.status === 200) {
                 alert("Inscription effectuée avec succès");
-                reset()
-                
-            } else if(res.status == 401) {
-                alert('Oops')
+                reset();
+            } else if (res.status == 401) {
+                alert("Oops");
             }
-            navigate('/connexion')
+            navigate("/connexion");
             console.log(res);
         } catch (error) {
             console.log(error);
@@ -46,8 +45,6 @@ const Inscription = () => {
                 alert("L'inscription a échouée");
             }
         }
-        
-        
     };
 
     return (

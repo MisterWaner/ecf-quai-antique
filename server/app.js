@@ -1,11 +1,11 @@
 //import modules
 import express, { json, urlencoded } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import db from "./db/sequelize.config.js";
 
 import userRouter from "./routes/userRoute.js";
-import router from "./routes/generalRouter.js";
 import authRouter from "./routes/authRoutes.js";
 
 //Init server
@@ -16,6 +16,8 @@ const app = express();
 app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
+app.use(cookieParser());
+
 
 //Routes
 app.get("/", (req, res) => {
@@ -23,7 +25,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use('/', router);
 app.use('/', authRouter);
 
 

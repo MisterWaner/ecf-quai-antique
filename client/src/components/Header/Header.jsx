@@ -37,7 +37,7 @@ const Header = () => {
                 </ul>
             </nav>
             <button onClick={handleClick} className="btn">
-                Réservez
+                Réservez/Connexion
             </button>
         </header>
     );

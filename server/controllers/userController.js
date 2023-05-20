@@ -12,6 +12,20 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ message: "Database Error", error });
     }
 };
+const getByRole = async (req, res) => {
+    try {
+        const { role } = req.body;
+
+        const userRole = await db.User.findAll({
+            where: {
+                role: role,
+            },
+        });
+        res.status(200).json(userRole);
+    } catch (error) {
+        res.status(500).json({ message: "Database Error", error });
+    }
+};
 
 //Update
 const updateUser = async (req, res) => {
@@ -41,13 +55,12 @@ const updateUser = async (req, res) => {
                 password: password,
                 confirmation: confirmation,
                 firstname: firstname,
-                lastname: lastname
+                lastname: lastname,
             },
             {
                 where: { id: id },
             }
         );
-        
 
         res.json({ message: "User Updated", data: user });
     } catch (error) {
@@ -74,4 +87,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export {  getAllUsers, updateUser, deleteUser };
+export { getAllUsers, updateUser, deleteUser, getByRole };
