@@ -16,8 +16,8 @@ export default (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            file: {
-                type: DataTypes.BLOB('long'),
+            path: {
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             description: {

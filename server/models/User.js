@@ -44,10 +44,7 @@ export default (sequelize) => {
                 allowNull: true,
             },
             phone: {
-                type: DataTypes.INTEGER(10),
-                validate: {
-                    isNumeric: true, //Data validation
-                },
+                type: DataTypes.STRING,
                 allowNull: true,
                 unique: true,
             },

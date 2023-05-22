@@ -1,15 +1,15 @@
 import db from "../db/sequelize.config.js";
 
-const getAllCartes = async (req, res) => {
+const getAllDishes = async (req, res) => {
     try {
-        const allCartes = await db.Dish.findAll();
-        res.status(200).json(allCartes);
+        const allDishes = await db.Dish.findAll();
+        res.status(200).json(allDishes);
     } catch (error) {
         res.status(500).json({ message: "Database Error", error });
     }
 }
 
-const getCarte = async (req, res) => {
+const getDish = async (req, res) => {
     const id = parseInt(req.params.id)
 
     //Check if id is ok
@@ -34,7 +34,7 @@ const getCarte = async (req, res) => {
     }
 }
 
-const createCarte = async (req, res) => {
+const createDish = async (req, res) => {
     try {
         const { title, description, price, id } = req.body;
 
@@ -59,7 +59,7 @@ const createCarte = async (req, res) => {
             id: id,
             title: title,
             description: description,
-            image: image,
+            
             price: price,
         });
         return res.json({ message: "Dish created", data: dish });
@@ -68,7 +68,7 @@ const createCarte = async (req, res) => {
     }
 }
 
-const updateCarte = async (req, res) => {
+const updateDish = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const { title, description, price, image } = req.body;
@@ -93,7 +93,6 @@ const updateCarte = async (req, res) => {
             {
                 title: title,
                 description: description,
-                image: image,
                 price: price
             },
             {
@@ -107,7 +106,7 @@ const updateCarte = async (req, res) => {
     }
 }
 
-const deleteCarte = async (req, res) => {
+const deleteDish = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         //Check if id is OK
@@ -126,4 +125,4 @@ const deleteCarte = async (req, res) => {
     }
 }
 
-export {createCarte, getAllCartes, getCarte, updateCarte, deleteCarte};
+export {createDish, getAllDishes, getDish, updateDish, deleteDish};

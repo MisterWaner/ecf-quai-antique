@@ -42,7 +42,7 @@ const getUserById = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const { email, password, confirmation, firstname, lastname } = req.body;
+        const { email, password, confirmation, firstname, lastname, allergies, phone } = req.body;
 
         //Check if id is ok
         if (!id) {
@@ -67,6 +67,8 @@ const updateUser = async (req, res) => {
                 confirmation: confirmation,
                 firstname: firstname,
                 lastname: lastname,
+                allergies: allergies,
+                phone: phone
             },
             {
                 where: { id: id },

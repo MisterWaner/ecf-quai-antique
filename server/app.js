@@ -8,13 +8,14 @@ import multer from 'multer';
 
 import userRouter from "./routes/userRoute.js";
 import authRouter from "./routes/authRoutes.js";
-import carteRouter from "./routes/carteRoutes.js";
+import dishRouter from "./routes/dishRoutes.js";
 import menuRouter from "./routes/menuRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import formulaRouter from "./routes/formulaRoutes.js";
 import openingRouter from "./routes/openingRoutes.js";
 import permissionRouter from "./routes/permissionRoutes.js";
 import resaRouter from "./routes/resaRoutes.js";
+import slotRouter from "./routes/slotRoutes.js";
 
 //Init server
 config();
@@ -41,13 +42,14 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 app.use('/auth', authRouter);
-app.use('/cartes', carteRouter);
+app.use('/dishes', dishRouter);
 app.use('/menus', menuRouter);
 app.use('/formulas', formulaRouter)
 app.use('/categories', categoryRouter);
 app.use('/openings', openingRouter);
 app.use('/permissions', permissionRouter);
 app.use('/resas', resaRouter);
+app.use('/slots', slotRouter);
 
 db.sequelize
     .authenticate()
