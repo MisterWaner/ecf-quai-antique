@@ -13,7 +13,12 @@ config();
 const app = express();
 
 //Middleware
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: "Origin, X-Requested-With, x-access-token, role, Content, Accept, Content-Type, Authorization"
+}));
+
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -25,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 
 
 db.sequelize

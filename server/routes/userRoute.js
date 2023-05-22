@@ -4,13 +4,13 @@ import {
     getAllUsers,
     updateUser,
     deleteUser,
-    getByRole
+    getUserById
 } from "../controllers/userController.js";
 
 const userRouter = Router();
 
 userRouter.get("/", getAllUsers);
-userRouter.get("/role", getByRole);
+userRouter.get("/:id", getUserById);
 userRouter.put("/:id", updateUser);
 userRouter.delete("/:id", deleteUser);
 

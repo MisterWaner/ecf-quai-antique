@@ -1,6 +1,7 @@
 //Import module
 import { DataTypes, Model } from "sequelize";
 
+
 //User model
 
 export default (sequelize) => {
@@ -68,4 +69,4 @@ export default (sequelize) => {
     );
 
     return User;
-}
+};

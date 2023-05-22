@@ -4,12 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { connexionSchema } from "../../../Validation/ConnexionValidation";
-import axios from "../../../api/axios";
+import Axios from "../../../api/axios";
 
-const LOGIN_URL = "/login";
+const LOGIN_URL = "/auth/login";
 
 const Connexion = () => {
-    const navigate = useNavigate();
+
+    const navigate = useNavigate()
 
     const {
         register,
@@ -25,15 +26,17 @@ const Connexion = () => {
         console.log(data);
 
         try {
-            const res = await axios.post(LOGIN_URL, data);
+            const res = await Axios.post(LOGIN_URL, data);
             console.log(res);
 
-            const role = res?.data?.role;
+            const role = res?.data?.user.role;
+            const token = res?.data?.accessToken;
             console.log(role);
+            console.log(token);
 
-            if (role === "admin") {
+            if (role === "admin" && token) {
                 navigate("/dashboard");
-            } else if (role === "client") {
+            } else if (role === "client" && token) {
                 navigate("/mon-compte");
             }
         } catch (error) {

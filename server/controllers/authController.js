@@ -6,7 +6,7 @@ import { config } from "dotenv";
 config();
 
 //sign-in
-const signIn = async (req, res) => {
+const register = async (req, res) => {
     try {
         const { email, password, confirmation, role, id } = req.body;
 
@@ -29,7 +29,7 @@ const signIn = async (req, res) => {
                 .status(409)
                 .json({ message: `The user ${email} already exists` });
         }
-        
+
         //hash password
         db.User.beforeCreate(async (user, options) => {
             let hash = await bcrypt.hash(
@@ -48,8 +48,7 @@ const signIn = async (req, res) => {
             confirmation: confirmation,
             role: role,
         });
-        return res.json({message: 'User created', data: user}); 
-          
+        return res.json({ message: "User created", data: user });
     } catch (error) {
         return res.status(500).json({ message: "Database Error", error });
     }
@@ -57,14 +56,14 @@ const signIn = async (req, res) => {
 
 //login
 const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    //check if email or password are present
+    if (!email || !password) {
+        res.sendStatus(400).json({ message: "Missing parameter" });
+    }
+
     try {
-        const { email, password } = req.body;
-
-        //check if email or password are present
-        if (!email || !password) {
-            res.sendStatus(400).json({ message: "Missing parameter" });
-        }
-
         //retrieve the user
         let user = await db.User.findOne({
             where: { email: email },
@@ -76,6 +75,7 @@ const login = async (req, res) => {
                 .json({ message: "This user does not exists" });
         }
 
+        //check password
         const validPassword = (enteredPassword, originalPassword) => {
             return new Promise((resolve) => {
                 bcrypt.compare(
@@ -88,122 +88,42 @@ const login = async (req, res) => {
             });
         };
 
-        if (!validPassword)
+        if (!validPassword) {
             return res.status(401).json({ message: "Mot de passe invalide" });
-
-        if (user.role === "admin") {
-            const accessToken = jwt.sign(
+        } else {
+            const maxAge = 1 * 60 * 60;
+            //Token generation
+            const token = jwt.sign(
                 {
-                    "UserInfo": {
-                        "email": user.email,
-                        "role": user.role,
-                    },
+                    id: user.id,
+                    email: user.email,
                 },
                 process.env.SECRET_TOKEN,
-                { expiresIn: "15m" }
+                { expiresIn: maxAge }
             );
-
-            const refreshToken = jwt.sign(
-                {
-                    "email": user.email,
-                },
-                process.env.SECRET_REFRESH_TOKEN,
-                { expiresIn: "7d" }
-            );
-
-            res.cookie("jwt", refreshToken, {
+            res.cookie("jwt", token, {
                 httpOnly: true,
                 secure: true,
                 sameSite: "None",
-                maxAge: 7 * 24 * 60 * 60 * 1000,
+                maxAge: maxAge * 1000,
             });
-
-            user = { ...user, accessToken, refreshToken };
-        } else if (user.role === "client") {
-            const accessToken = jwt.sign(
-                {
-                    "UserInfo": {
-                        "email": user.email,
-                        "role": user.role,
-                    },
-                },
-                process.env.SECRET_TOKEN,
-                { expiresIn: "15m" }
-            );
-
-            const refreshToken = jwt.sign(
-                {
-                    "email": user.email,
-                },
-                process.env.SECRET_REFRESH_TOKEN,
-                { expiresIn: "7d" }
-            );
-
-            res.cookie("jwt", refreshToken, {
-                httpOnly: true,
-                secure: true,
-                sameSite: "None",
-                maxAge: 7 * 24 * 60 * 60 * 1000,
-            });
-
-            user = { ...user, accessToken, refreshToken };
+            return res.json({ user, accessToken: token });
         }
 
-        res.json(user);
-        console.log(user.role);
     } catch (error) {
         res.json({ message: error.message });
     }
 };
 
-const refresh = (req, res) => {
-    const cookies = req.cookies;
-
-    if (!cookies?.jwt) {
-        return res.status(401).json({ message: "Non Autorisé" });
-    }
-
-    const refreshToken = cookies.jwt;
-
-    jwt.verify(
-        refreshToken,
-        process.env.SECRET_REFRESH_TOKEN,
-        async (err, decoded) => {
-            if (err) {
-                return res.status(403).json({ message: "Interdit !" });
-            }
-
-            const user = await db.User.findOne({ email: decoded.email });
-
-            if (!user) {
-                return res.status(401).json({ message: "Non Autorisé !" });
-            }
-
-            const accessToken = jwt.sign(
-                {
-                    "UserInfo": {
-                        "email": user.email,
-                        "role": user.role,
-                    },
-                },
-                process.env.SECRET_TOKEN,
-                { expiresIn: "15m" }
-            );
-
-            res.json({accessToken})
-        }
-    );
-};
-
 const logout = (req, res) => {
     const cookies = req.cookies;
 
-    if(!cookies?.jwt) {
-        return res.sendStatus(204) //No content
+    if (!cookies?.jwt) {
+        return res.sendStatus(204); //No content
     }
-    
-    res.clearCookie('jwt', {httpOnly: true, sameSite: "None", secure: true})
-    res.json({message: 'Cookie effacé !'})
+
+    res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
+    res.json({ message: "Cookie effacé !" });
 };
 
-export { login, refresh, logout, signIn };
+export { login, logout, register };

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../../Validation/RegisterValidation";
-import axios from "../../../api/axios";
+import Axios from "../../../api/axios";
 
-const INSCRIPTION_URL = "/signin";
+const INSCRIPTION_URL = "/auth/register";
 
 const Inscription = () => {
     const {
@@ -26,7 +26,7 @@ const Inscription = () => {
         console.log(data);
 
         try {
-            const res = await axios.post(INSCRIPTION_URL, data);
+            const res = await Axios.post(INSCRIPTION_URL, data);
             if (res.status === 200) {
                 alert("Inscription effectuée avec succès");
                 reset();

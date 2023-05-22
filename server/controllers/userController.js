@@ -12,20 +12,31 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ message: "Database Error", error });
     }
 };
-const getByRole = async (req, res) => {
-    try {
-        const { role } = req.body;
 
-        const userRole = await db.User.findAll({
-            where: {
-                role: role,
-            },
+const getUserById = async (req, res) => {
+    const id = parseInt(req.params.id)
+
+    //Check if id is ok
+    if (!id) {
+        return res.status(400).json({ message: "Missing parameter" });
+    }
+
+    try {
+        let user = await db.User.findOne({
+            where: { id: id },
+            raw: true,
         });
-        res.status(200).json(userRole);
+
+        if (user === null) {
+            res.status(404).json({ message: "This user does not exist" });
+        }
+
+        res.status(200).json(user);
+        
     } catch (error) {
         res.status(500).json({ message: "Database Error", error });
     }
-};
+}
 
 //Update
 const updateUser = async (req, res) => {
@@ -87,4 +98,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export { getAllUsers, updateUser, deleteUser, getByRole };
+export { getAllUsers, updateUser, deleteUser, getUserById };
