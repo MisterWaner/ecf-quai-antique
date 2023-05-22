@@ -12,6 +12,10 @@ export default (sequelize) => {
                 primaryKey: true,
                 allowNull: false,
             },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
         },
         {
             modelName: "permission",

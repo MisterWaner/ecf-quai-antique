@@ -13,6 +13,8 @@ import menuRouter from "./routes/menuRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import formulaRouter from "./routes/formulaRoutes.js";
 import openingRouter from "./routes/openingRoutes.js";
+import permissionRouter from "./routes/permissionRoutes.js";
+import resaRouter from "./routes/resaRoutes.js";
 
 //Init server
 config();
@@ -43,7 +45,9 @@ app.use('/cartes', carteRouter);
 app.use('/menus', menuRouter);
 app.use('/formulas', formulaRouter)
 app.use('/categories', categoryRouter);
-app.use('/openings', openingRouter)
+app.use('/openings', openingRouter);
+app.use('/permissions', permissionRouter);
+app.use('/resas', resaRouter);
 
 db.sequelize
     .authenticate()
