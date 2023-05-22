@@ -16,20 +16,21 @@ export default (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            path: {
-                type: DataTypes.STRING,
+            file: {
+                type: DataTypes.BLOB('long'),
                 allowNull: false,
             },
             description: {
                 type: DataTypes.TEXT,
                 allowNull: true,
-            },
+            },    
         },
         {
             modelName: "image",
             tableName: "images",
             timestamps: false,
             sequelize,
+            
         }
     );
 

@@ -24,6 +24,10 @@ export default (sequelize) => {
                 type: DataTypes.FLOAT(2, 2).UNSIGNED,
                 allowNull: false,
             },
+            picture: {
+                type: DataTypes.BLOB('long'),
+                allowNull: false
+            }
         },
         {
             modelName: "dish",

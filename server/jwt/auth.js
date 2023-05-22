@@ -27,7 +27,7 @@ let adminAuth = (req, res, next) => {
 }
 
 let clientAuth = (req, res, next) => {
-    const token = req.cookies.jwt
+    const token = req.cookies
     
     if(token) {
 

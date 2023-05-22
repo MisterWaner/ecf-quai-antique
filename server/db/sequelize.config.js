@@ -52,7 +52,7 @@ db.User.hasMany(db.Permission);
 db.Permission.belongsTo(db.User);
 db.Category.hasMany(db.Dish);
 db.Dish.belongsTo(db.Category);
-db.Dish.hasMany(db.Image);
+db.Dish.hasOne(db.Image, {foreignKey: 'dishId'});
 db.Image.belongsTo(db.Dish);
 db.Menu.belongsToMany(db.Formula, {through: db.Menu_Formula});
 db.Formula.belongsToMany(db.Menu, {through: db.Menu_Formula});

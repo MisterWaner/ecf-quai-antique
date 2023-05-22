@@ -4,15 +4,18 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import db from "./db/sequelize.config.js";
+import multer from 'multer';
 
 import userRouter from "./routes/userRoute.js";
 import authRouter from "./routes/authRoutes.js";
+import carteRouter from "./routes/carteRoutes.js";
 
 //Init server
 config();
 const app = express();
 
 //Middleware
+
 app.use(cors({
     origin: "*",
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
@@ -24,6 +27,7 @@ app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+
 //Routes
 app.get("/", (req, res) => {
     res.send("API en ligne");
@@ -31,6 +35,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 app.use('/auth', authRouter);
+app.use('/cartes', carteRouter);
 
 
 db.sequelize
