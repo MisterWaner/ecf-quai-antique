@@ -1,7 +1,5 @@
 import fs from 'fs';
 import db from '../db/sequelize.config';
-import { log } from 'console';
-import { title } from 'process';
 
 const Image = db.Image;
 
@@ -10,9 +8,9 @@ const uploadFiles = async (req, res) => {
     const {title, file, description} = req.body
     
     try {
-        console.log(req.file);
+        console.log(file);
 
-        if(req.file == undefined) {
+        if(file == undefined) {
             return res.send('Vous devez choisir un fichier');
         }
 

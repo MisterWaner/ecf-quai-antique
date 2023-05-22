@@ -47,7 +47,7 @@ const DashboardCarte = () => {
             <section className="carte-management">
                 <h2>Création</h2>
                 <div className="carte-creation-container">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
                         <div className="input-container">
                             <label htmlFor="title">Nom du plat:</label>
                             <input
@@ -59,7 +59,7 @@ const DashboardCarte = () => {
                             />
                             {errors.title && (
                             <p className="error-msg">{errors.title?.message}</p>
-                        )}
+                            )}
                         </div>
                         <div className="input-container">
                             <label htmlFor="image">Image:</label>
@@ -83,7 +83,8 @@ const DashboardCarte = () => {
                             <label htmlFor="price">Prix:</label>
                             <input
                                 autoComplete="off"
-                                type="text"
+                                type="number"
+                                step="0.01"
                                 placeholder="example@example.com"
                                 id="price"
                                 {...register("price")}

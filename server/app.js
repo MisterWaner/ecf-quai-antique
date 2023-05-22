@@ -9,6 +9,8 @@ import multer from 'multer';
 import userRouter from "./routes/userRoute.js";
 import authRouter from "./routes/authRoutes.js";
 import carteRouter from "./routes/carteRoutes.js";
+import menuRouter from "./routes/menuRoutes.js";
+import categoryRouter from "./routes/categoryRoutes.js";
 
 //Init server
 config();
@@ -36,7 +38,8 @@ app.get("/", (req, res) => {
 app.use("/users", userRouter);
 app.use('/auth', authRouter);
 app.use('/cartes', carteRouter);
-
+app.use('/menus', menuRouter);
+app.use('/categories', categoryRouter);
 
 db.sequelize
     .authenticate()
