@@ -28,11 +28,15 @@ export default (sequelize) => {
                 type: DataTypes.TIME,
                 allowNull: true,
             },
-            soirTimeFrom: {
+            soirTimeTo: {
                 type: DataTypes.TIME,
                 allowNull: true,
             },
-            isOpen: {
+            isOpenMidi: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+            },
+            isOpenSoir: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
             },

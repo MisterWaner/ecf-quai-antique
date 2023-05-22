@@ -21,7 +21,7 @@ export default (sequelize) => {
                 allowNull: false,
             },
             price: {
-                type: DataTypes.FLOAT(2, 2).UNSIGNED,
+                type: DataTypes.FLOAT(4,2).UNSIGNED,
                 allowNull: false,
             },
         },
