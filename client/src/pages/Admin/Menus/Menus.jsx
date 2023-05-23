@@ -63,7 +63,6 @@ const AdminMenus = () => {
                                 </p>
                             )}
                         </div>
-
                         <div className="button-container">
                             <button type="submit">Enregistrer</button>
                         </div>
