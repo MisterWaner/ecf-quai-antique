@@ -17,7 +17,7 @@ let addUser = (user) => {
 
 //update an user
 let updateUser = (user) => {
-    return Axios.patch(`/users/${user.id}`, user);
+    return Axios.put(`/users/${user.id}`, user);
 };
 //delete an user
 let deleteUser = (id) => {

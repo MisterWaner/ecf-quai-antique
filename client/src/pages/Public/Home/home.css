@@ -2,7 +2,6 @@
     background-color: #f1f1f1;
     background: url("../../../assets/Images/restaurant.jpg") center center no-repeat;
     height: 90vh;
-    margin-top: 155px;
 }
 .main-title {
     width: 100%;
@@ -17,8 +16,36 @@
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
 }
-
-.home-section,
 .home-section {
     padding: 15px 0;
+}
+
+/****** RESPONSIVE *******/
+@media screen and (max-width: 1280px) {
+    .hero-section {
+        background-size: cover;
+    }
+    .home-section {
+        padding: 20px 25px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .hero-section {
+        height: 50vh;
+        margin: 0 auto;
+    }
+    .main-title {
+        font-size: 60px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .main-title {
+        font-size: 50px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .main-title {
+        font-size: 40px;
+    }
 }

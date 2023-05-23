@@ -1,8 +1,10 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Logo from "../../assets/Images/logo-quai-antique.png";
 
 const Navbar = () => {
+
+    const params = useParams()
     return (
         <header className="header">
             <div className="logo-container">
@@ -13,10 +15,10 @@ const Navbar = () => {
             <nav>
                 <ul className="nav-container">
                     <li className="nav-item">
-                        <Link to="/mon-compte">Mon Compte</Link>
+                        <Link to={`/mon-compte/${params.id}`}>Mon Compte</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/mon-compte/reservation">Réservation</Link>
+                        <Link to={`/mon-compte/${params.id}/reservation`}>Réservation</Link>
                     </li>
                 </ul>
             </nav>

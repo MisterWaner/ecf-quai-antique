@@ -28,7 +28,7 @@ const Sidebar = () => {
                         <Link to="/dashboard/reservations">Réservations</Link>
                     </li>
                     <li className="sidebar-nav-item">
-                        <Link to="/dashboard/photos">Photos</Link>
+                        <Link to="/dashboard/images">Images</Link>
                     </li>
                     <li className="sidebar-nav-item">
                         <Link to="/connexion">Déconnexion</Link>

@@ -56,6 +56,16 @@ export default (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            quantity: {
+                type: DataTypes.SMALLINT.UNSIGNED,
+                allowNull: false,
+                defaultValue: 1,
+            },
+            children: {
+                type: DataTypes.SMALLINT.UNSIGNED,
+                allowNull: false,
+                defaultValue: 0
+            }
         },
         {
             modelName: "user",

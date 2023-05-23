@@ -17,11 +17,11 @@ import Inscription from "./pages/Public/Inscription/Inscription";
 //AdminLayout
 import AdminLayout from "./pages/Admin/AdminLayout/AdminLayout";
 import Dashboard from "./pages/Admin/Dashboard/Dashboard";
-import DashboardCarte from "./pages/Admin/Carte/Carte";
-import DashboardMenus from "./pages/Admin/Menus/Menus";
-import DashboardReservations from "./pages/Admin/Reservations/DashboardReservations";
+import AdminCarte from "./pages/Admin/Carte/Carte";
+import AdminMenus from "./pages/Admin/Menus/Menus";
+import Reservations from "./pages/Admin/Reservations/Reservations";
 import Horaires from "./pages/Admin/Horaires/Horaires";
-import Photos from "./pages/Admin/Photos/Photos";
+import Images from "./pages/Admin/Images/Images";
 //AccountLayout
 import RegisteredLayout from "./pages/Account/RegisteredLayout/RegisteredLayout";
 import Profile from "./pages/Account/Profile/Profile";
@@ -45,23 +45,23 @@ function App() {
                     <Route index element={<Dashboard />} />
                     <Route
                         path="/dashboard/carte"
-                        element={<DashboardCarte />}
+                        element={<AdminCarte />}
                     />
                     <Route
                         path="/dashboard/menus"
-                        element={<DashboardMenus />}
+                        element={<AdminMenus />}
                     />
                     <Route path="/dashboard/horaires" element={<Horaires />} />
                     <Route
                         path="/dashboard/reservations"
-                        element={<DashboardReservations />}
+                        element={<Reservations />}
                     />
-                    <Route path="/dashboard/photos" element={<Photos />} />
+                    <Route path="/dashboard/images" element={<Images />} />
                 </Route>
-                <Route path="/mon-compte" element={<RegisteredLayout />}>
-                    <Route index element={<Profile />} />
+                <Route path="/mon-compte/:id" element={<RegisteredLayout />}>
+                    <Route path="/mon-compte/:id" index element={<Profile />} />
                     <Route
-                        path="/mon-compte/reservation"
+                        path="/mon-compte/:id/reservation"
                         element={<Reservation />}
                     />
                 </Route>

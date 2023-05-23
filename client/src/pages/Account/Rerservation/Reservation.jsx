@@ -1,17 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import "./reservation.css";
 import Couverts from "../../../assets/icon/utensils-solid.svg";
+import Axios from "../../../api/axios.js"
 
 const Reservation = () => {
+
+    const params = useParams()
+
+    const GET_USER_URL = `/users/${params.id}`
+
+
+    
+
     const [quantity, setQuantity] = useState(1);
 
     const increase = () => {
         setQuantity(quantity + 1);
+        if(quantity === 10) {
+            setQuantity(10);
+        }
     };
-
     const decrease = () => {
         setQuantity(quantity - 1);
+        if(quantity === 1) {
+            setQuantity(1)
+        }
     };
 
     const today = new Date().toISOString().split("T")[0];

@@ -8,7 +8,7 @@ import { menuSchema } from "../../../Validation/MenuValidation.js";
 
 const MENU_URL = "/menus";
 
-const DashboardMenus = () => {
+const AdminMenus = () => {
     const {
         register,
         handleSubmit,
@@ -77,4 +77,4 @@ const DashboardMenus = () => {
     );
 };
 
-export default DashboardMenus;
+export default AdminMenus;

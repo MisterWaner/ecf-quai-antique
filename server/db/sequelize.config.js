@@ -73,6 +73,6 @@ db.Image.belongsTo(db.Permission);
 
 
 
-db.sequelize.sync({alter: true});
+db.sequelize.sync();
 
 export default db;

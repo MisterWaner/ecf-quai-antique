@@ -1,6 +1,6 @@
-import "./photos.css";
+import "./images.css";
 
-const Photos = () => {
+const Images = () => {
     return (
         <main className="admin-main">
             <h1>Les Photos</h1>
@@ -29,4 +29,4 @@ const Photos = () => {
     );
 };
 
-export default Photos;
+export default Images;

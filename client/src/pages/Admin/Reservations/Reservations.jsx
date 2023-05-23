@@ -1,6 +1,6 @@
 import "./reservations.css";
 
-const DashboardReservations = () => {
+const Reservations = () => {
     return (
         <main className="admin-main">
             <h1>Les Réservations</h1>
@@ -11,4 +11,4 @@ const DashboardReservations = () => {
     );
 };
 
-export default DashboardReservations;
+export default Reservations;

@@ -30,6 +30,7 @@ export default (sequelize) => {
         {
             modelName: "reservation",
             tableName: "reservations",
+            timestamps: false,
             sequelize,
         }
     );

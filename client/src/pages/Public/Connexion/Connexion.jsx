@@ -31,13 +31,14 @@ const Connexion = () => {
 
             const role = res?.data?.user.role;
             const token = res?.data?.accessToken;
+            const id = res?.data?.user.id;
             console.log(role);
             console.log(token);
 
             if (role === "admin" && token) {
                 navigate("/dashboard");
-            } else if (role === "client" && token) {
-                navigate("/mon-compte");
+            } else if (role === "client" && id && token) {
+                navigate(`/mon-compte/${id}`);
             }
         } catch (error) {
             console.log(error);

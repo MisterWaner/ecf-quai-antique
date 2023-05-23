@@ -1,5 +1,6 @@
 //Import module
 import db from "../db/sequelize.config.js";
+import bcrypt from "bcrypt";
 import { config } from "dotenv";
 config();
 
@@ -42,7 +43,7 @@ const getUserById = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const { email, password, confirmation, firstname, lastname, allergies, phone } = req.body;
+        const { email, password, confirmation, firstname, lastname, allergies, phone, children, quantity } = req.body;
 
         //Check if id is ok
         if (!id) {
@@ -59,6 +60,15 @@ const updateUser = async (req, res) => {
             res.status(404).json({ message: "This user does not exist" });
         }
 
+        //hash password
+        db.User.beforeUpdate(async (user, options) => {
+            let hash = await bcrypt.hash(
+                user.password,
+                parseInt(process.env.BCRYPT_SALT_ROUND)
+            ); //hash function
+            user.password = hash;
+            user.confirmation = user.password;
+        });
         //update
         user = await db.User.update(
             {
@@ -68,7 +78,9 @@ const updateUser = async (req, res) => {
                 firstname: firstname,
                 lastname: lastname,
                 allergies: allergies,
-                phone: phone
+                phone: phone,
+                children: children,
+                quantity: quantity
             },
             {
                 where: { id: id },

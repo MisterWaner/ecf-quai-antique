@@ -7,7 +7,7 @@ import { carteCreationSchema } from "../../../Validation/CarteValidation";
 
 const CARTE_CREATION_URL = "/cartes";
 
-const DashboardCarte = () => {
+const AdminCarte = () => {
     const {
         register,
         handleSubmit,
@@ -103,4 +103,4 @@ const DashboardCarte = () => {
     );
 };
 
-export default DashboardCarte;
+export default AdminCarte;

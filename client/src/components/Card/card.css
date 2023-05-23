@@ -33,3 +33,21 @@ hr {
     padding: 5px 0;
     font-weight: bold;
 }
+
+/************ RESPONSIVE *************/
+@media screen and (max-width: 1280px) {
+    .card {
+        width: 300px;
+    }
+    .card-image {
+        width: 270px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .card {
+        width: 260px;
+    }
+    .card-image {
+        width: 230px;
+    }
+}
