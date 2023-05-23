@@ -1,13 +1,17 @@
 import "./images.css";
 
+
+
 const Images = () => {
+
+
     return (
         <main className="admin-main">
             <h1>Les Photos</h1>
             <section className="picture-management">
                 <h2>Téléchargement</h2>
                 <div className="upload-container">
-                    <form action="">
+                    <form>
                         <div className="input-container">
                             <label htmlFor="image">Image:</label>
                             <input type="file" name="image" id="image" />
@@ -16,15 +20,9 @@ const Images = () => {
                             <button type="submit">Enregistrer</button>
                         </div>
                     </form>
-                    <div className="upload-validation">
-
-                    </div>
                 </div>
             </section>
-            <section className="picture-management">
-                <h2>Suppresion</h2>
-                
-            </section>
+            <section className="picture-management"></section>
         </main>
     );
 };

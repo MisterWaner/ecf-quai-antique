@@ -4,7 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import db from "./db/sequelize.config.js";
-import multer from 'multer';
+
 
 import userRouter from "./routes/userRoute.js";
 import authRouter from "./routes/authRoutes.js";
@@ -16,6 +16,7 @@ import openingRouter from "./routes/openingRoutes.js";
 import permissionRouter from "./routes/permissionRoutes.js";
 import resaRouter from "./routes/resaRoutes.js";
 import slotRouter from "./routes/slotRoutes.js";
+import uploadRouter from "./controllers/uploadController.js";
 
 //Init server
 config();
@@ -50,6 +51,7 @@ app.use('/openings', openingRouter);
 app.use('/permissions', permissionRouter);
 app.use('/resas', resaRouter);
 app.use('/slots', slotRouter);
+app.use('/images', uploadRouter);
 
 db.sequelize
     .authenticate()

@@ -16,14 +16,10 @@ export default (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            path: {
-                type: DataTypes.STRING,
+            image: {
+                type: DataTypes.BLOB,
                 allowNull: false,
-            },
-            description: {
-                type: DataTypes.TEXT,
-                allowNull: true,
-            },    
+            },   
         },
         {
             modelName: "image",
