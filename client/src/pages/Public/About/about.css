@@ -22,3 +22,15 @@
         -1px -1px 0 #000;
     text-transform: uppercase;
 }
+
+/* ********* RESPONSIVE ********* */
+@media screen and (max-width: 1280px) {
+    .about-section {
+        margin: 25px 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .planning-table {
+        width: 80%;
+    }
+}

@@ -267,8 +267,16 @@ h1 {
     .list {
         display: flex;
         flex-direction: column;
-        height: 700px;
+        justify-content: flex-start;
+        height: 430px;
         width: 100%;
+        align-items: center;
+    }
+    .nav-item {
+        margin: 10px auto;
+    }
+    .btn {
+        margin: 0 auto;
     }
     .burger-btn {
         display: block;

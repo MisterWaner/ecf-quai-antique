@@ -10,3 +10,11 @@
 .menu-title {
     text-align: center;
 }
+
+/*********** RESPONSIVE ******************/
+@media screen and (max-width: 1280px) {
+    .menu-card {
+        width: 275px;
+    }
+    
+}
