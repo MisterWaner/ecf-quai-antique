@@ -5,8 +5,8 @@
     text-decoration: underline;
 }
 .info-container {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
+    display: flex;
+    justify-content: space-around;
     margin-top: 25px;
 }
 .info {
@@ -15,7 +15,7 @@
 .info-container table {
     border: 2px solid #000;
     border-radius: 10px;
-    
+    width: 25vw;
 }
 .label {
     font-weight: bold;
@@ -24,4 +24,35 @@
 }
 .value {
     font-size: 1.2rem;
+}
+
+/*********** RESPONSIVE ***************/
+@media screen and (max-width: 1280px) {
+    .profile-section {
+        margin: 25px 35px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .info, .info-container table {
+        width: 35vw;
+    }
+}
+@media screen and (max-width: 900px) {
+    .info-container {
+        flex-direction: column;
+        width: 50vw;
+        margin: 25px auto;
+        
+    }
+    .info, .info-container table {
+        width: 100%;
+    }
+    .info {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .info-container {
+        width: 75vw;
+    }
 }

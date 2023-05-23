@@ -1,31 +1,41 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "./reservation.css";
 import Couverts from "../../../assets/icon/utensils-solid.svg";
-import Axios from "../../../api/axios.js"
+import Children from "../../../assets/icon/children-solid.svg";
+import Axios from "../../../api/axios.js";
 
 const Reservation = () => {
+    const params = useParams();
 
-    const params = useParams()
-
-    const GET_USER_URL = `/users/${params.id}`
-
-
-    
+    const GET_USER_URL = `/users/${params.id}`;
 
     const [quantity, setQuantity] = useState(1);
+    const [children, setChildren] = useState(0);
 
     const increase = () => {
         setQuantity(quantity + 1);
-        if(quantity === 10) {
+        if (quantity === 10) {
             setQuantity(10);
         }
     };
     const decrease = () => {
         setQuantity(quantity - 1);
-        if(quantity === 1) {
-            setQuantity(1)
+        if (quantity === 1) {
+            setQuantity(1);
+        }
+    };
+    const increaseChildren = () => {
+        setChildren(children + 1);
+        if (children === 5) {
+            setChildren(5);
+        }
+    };
+    const decreaseChildren = () => {
+        setChildren(children - 1);
+        if (children === 0) {
+            setChildren(0);
         }
     };
 
@@ -41,6 +51,14 @@ const Reservation = () => {
                         <button onClick={decrease}>-</button>
                         <p>{quantity}</p>
                         <button onClick={increase}>+</button>
+                    </div>
+                </div>
+                <div className="quantity-container">
+                    <img src={Children} alt="" />
+                    <div className="quantity-counter">
+                        <button onClick={decreaseChildren}>-</button>
+                        <p>{children}</p>
+                        <button onClick={increaseChildren}>+</button>
                     </div>
                 </div>
                 <div className="date-container">
@@ -92,6 +110,8 @@ const Reservation = () => {
                             id="slot5"
                         />
                         <label htmlFor="slot5">13:00</label>
+                    </div>
+                    <div className="slot-container slot-container2">
                         <input
                             className="radio"
                             type="radio"
@@ -107,6 +127,7 @@ const Reservation = () => {
                         />
                         <label htmlFor="slot7">13:30</label>
                     </div>
+
                     <div className="button-container">
                         <button type="submit">Je réserve</button>
                     </div>
@@ -144,6 +165,8 @@ const Reservation = () => {
                             id="slot11"
                         />
                         <label htmlFor="slot11">19:45</label>
+                    </div>
+                    <div className="slot-container">
                         <input
                             className="radio"
                             type="radio"
@@ -172,6 +195,8 @@ const Reservation = () => {
                             id="slot16"
                         />
                         <label htmlFor="slot16">20:45</label>
+                    </div>
+                    <div className="slot-container">
                         <input
                             className="radio"
                             type="radio"

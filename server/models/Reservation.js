@@ -17,9 +17,14 @@ export default (sequelize) => {
                 allowNull: false,
             },
             quantity: {
-                type: DataTypes.SMALLINT,
+                type: DataTypes.SMALLINT.UNSIGNED,
                 allowNull: false,
                 defaultValue: 1,
+            },
+            children: {
+                type: DataTypes.SMALLINT.UNSIGNED,
+                allowNull: false,
+                defaultValue: 0,
             },
             maximumCapacity: {
                 type: DataTypes.INTEGER(2),

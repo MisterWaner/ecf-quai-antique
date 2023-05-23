@@ -256,7 +256,7 @@ const Profile = () => {
                         <tbody>
                             <tr>
                                 <td className="label">Allergies:</td>
-                                <td className="value">John</td>
+                                <td className="value">Noix</td>
                             </tr>
                             <tr>
                                 <td className="label">Nombre de couverts:</td>
